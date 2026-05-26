@@ -56,11 +56,55 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "SI RISKCONSULTING",
+  url: "https://www.si-riskconsulting.fr",
+  logo: "https://www.si-riskconsulting.fr/logo.png",
+  description:
+    "Bureau d'études indépendant spécialisé en sécurité incendie : CSSI, MOE SSI, AMO, audits et conformité réglementaire ERP, IGH, ICPE.",
+  telephone: "+33189629492",
+  email: "si-riskconsulting@outlook.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Noisy-le-Grand",
+    addressLocality: "Noisy-le-Grand",
+    postalCode: "93160",
+    addressCountry: "FR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 48.847,
+    longitude: 2.55,
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "France",
+  },
+  serviceType: [
+    "Coordination SSI",
+    "MOE SSI",
+    "AMO sécurité incendie",
+    "Audit incendie",
+    "Conformité réglementaire ERP",
+    "Conformité IGH",
+    "Conformité ICPE",
+  ],
+  sameAs: [],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <div id="top" aria-hidden="true" />
         <Navbar />
