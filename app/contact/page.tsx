@@ -106,8 +106,6 @@ export default function ContactPage() {
                       </div>
                     </li>
                   ))}
-
-                  {/* Location */}
                   <li className="flex items-start gap-3">
                     <span className="w-10 h-10 rounded-lg bg-orange-500/15 text-orange-400 flex items-center justify-center shrink-0">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -117,14 +115,13 @@ export default function ContactPage() {
                     </span>
                     <div>
                       <div className="text-xs text-slate-500 font-medium">Localisation</div>
-                      <p className="text-sm text-white font-medium">Noisy-le-Grand (93)</p>
+                      <p className="text-sm text-white font-medium">Noisy-le-Grand (93160)</p>
                       <p className="text-xs text-slate-500 mt-0.5">Île-de-France · Interventions sur toute la France</p>
                     </div>
                   </li>
                 </ul>
               </div>
 
-              {/* Location banner */}
               <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20">
                 <div className="flex items-start gap-2.5">
                   <svg className="w-4 h-4 text-orange-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,8 +215,6 @@ export default function ContactPage() {
                         className={`${inputCls} resize-none`}
                       />
                     </div>
-
-                    {/* RGPD consent */}
                     <div className="flex items-start gap-3 p-4 rounded-xl bg-white/3 border border-white/8">
                       <input
                         type="checkbox"
@@ -236,7 +231,6 @@ export default function ContactPage() {
                         <span className="text-red-400">*</span>
                       </label>
                     </div>
-
                     {status === "error" && (
                       <p className="text-red-400 text-sm">Une erreur est survenue. Veuillez réessayer.</p>
                     )}
@@ -255,6 +249,36 @@ export default function ContactPage() {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Maps */}
+      <section className="bg-[#060c18] border-t border-white/8">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-9 h-9 rounded-lg bg-orange-500/15 text-orange-400 flex items-center justify-center shrink-0">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </span>
+            <div>
+              <h2 className="text-white font-bold text-lg">Basé à Noisy-le-Grand</h2>
+              <p className="text-slate-500 text-sm">93160 · Île-de-France · Interventions sur toute la France</p>
+            </div>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-white/8 h-80">
+            <iframe
+              title="Localisation SI RISKCONSULTING – Noisy-le-Grand"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21007.45!2d2.5500!3d48.8450!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60e1b2f3c3b3b%3A0x40b82c3688c9e00!2sNoisy-le-Grand%2C%2093160!5e0!3m2!1sfr!2sfr!4v1700000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

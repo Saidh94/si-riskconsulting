@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import ScrollToTop from "@/components/ScrollToTop";
+import FloatingContact from "@/components/FloatingContact";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -64,6 +66,8 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
+        <ScrollToTop />
+        <FloatingContact />
       </body>
     </html>
   );
