@@ -269,8 +269,8 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative rounded-2xl overflow-hidden border border-white/8 h-64">
                 <Image
-                  src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80"
-                  alt="Tableau SSI – Système de Sécurité Incendie"
+                  src="https://images.unsplash.com/photo-1767741683084-08ac01518c8c?w=600&q=80"
+                  alt="Alarme incendie SSI – Système de Sécurité Incendie"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover"
@@ -283,8 +283,8 @@ export default function HomePage() {
               </div>
               <div className="relative rounded-2xl overflow-hidden border border-white/8 h-64">
                 <Image
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
-                  alt="Réseau sprinkler – extinction automatique à eau"
+                  src="https://images.unsplash.com/photo-1573336607838-da107007ee13?w=600&q=80"
+                  alt="Tête sprinkler au plafond – extinction automatique à eau"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   className="object-cover"
