@@ -271,7 +271,7 @@ export default function ContactPage() {
           <div className="rounded-2xl overflow-hidden border border-white/8 h-80">
             <iframe
               title="Localisation SI RISKCONSULTING – Noisy-le-Grand"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21007.45!2d2.5500!3d48.8450!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60e1b2f3c3b3b%3A0x40b82c3688c9e00!2sNoisy-le-Grand%2C%2093160!5e0!3m2!1sfr!2sfr!4v1700000000000"
+              src="https://maps.google.com/maps?q=Noisy-le-Grand,+93160,+France&z=14&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
