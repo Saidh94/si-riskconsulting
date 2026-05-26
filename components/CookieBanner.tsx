@@ -24,7 +24,7 @@ export default function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6">
+    <div className="fixed bottom-0 left-0 right-0 z-[200] p-4 sm:p-6">
       <div className="mx-auto max-w-4xl bg-[#0d1626] border border-white/15 rounded-2xl shadow-[0_-4px_40px_rgba(0,0,0,0.6)] p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           {/* Icon + text */}

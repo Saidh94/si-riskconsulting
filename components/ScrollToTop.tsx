@@ -16,9 +16,21 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // Essaye toutes les méthodes possibles
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    // Ancre native en fallback
+    window.location.hash = "";
+    window.location.hash = "top";
+  };
+
   return (
     <a
       href="#top"
+      onClick={handleClick}
       aria-label="Retour en haut"
       className={`fixed bottom-24 right-5 z-50 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
