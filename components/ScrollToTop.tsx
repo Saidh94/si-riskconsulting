@@ -6,13 +6,17 @@ export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
+    const onScroll = () => {
+      const scrollEl = document.scrollingElement || document.documentElement;
+      setVisible(scrollEl.scrollTop > 400);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollEl = document.scrollingElement || document.documentElement;
+    scrollEl.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
