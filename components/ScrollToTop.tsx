@@ -5,36 +5,18 @@ export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(
-        window.scrollY > 400 ||
-        document.documentElement.scrollTop > 400 ||
-        document.body.scrollTop > 400
-      );
-    };
+    const onScroll = () => setVisible(window.scrollY > 400);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    // Essaye toutes les méthodes possibles
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    // Ancre native en fallback
-    window.location.hash = "";
-    window.location.hash = "top";
-  };
+  if (!visible) return null;
 
   return (
     <a
       href="#top"
-      onClick={handleClick}
       aria-label="Retour en haut"
-      className={`fixed bottom-24 right-5 z-50 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-      }`}
+      className="fixed bottom-24 right-5 z-50 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
       style={{ background: "linear-gradient(135deg, #f97316, #dc2626)" }}
     >
       <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

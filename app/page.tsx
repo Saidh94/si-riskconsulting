@@ -242,6 +242,122 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── SYSTÈMES ── */}
+      <section className="py-24 bg-[#060c18]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-orange-400 font-semibold text-xs uppercase tracking-widest">Domaines techniques</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-black text-white">
+              Les systèmes que nous maîtrisons
+            </h2>
+            <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
+              De la détection à l&apos;extinction, notre cabinet couvre l&apos;ensemble
+              des équipements de sécurité incendie réglementés.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                title: "SSI",
+                subtitle: "Système de Sécurité Incendie",
+                desc: "Centrales de détection, déclencheurs manuels, tableaux de signalisation — conception et coordination complète.",
+                image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Sprinkler",
+                subtitle: "Extinction automatique à eau",
+                desc: "Réseaux sprinklers, brouillard d'eau, RIA — analyse des risques et vérification de conformité APSAD.",
+                image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 3v1m0 16v1m8.66-9h-1M4.34 12h-1m15.07-6.07l-.71.71M6.34 17.66l-.71.71m12.02 0l-.71-.71M6.34 6.34l-.71-.71M12 7a5 5 0 100 10A5 5 0 0012 7z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Désenfumage",
+                subtitle: "Évacuation des fumées et gaz chauds",
+                desc: "Désenfumage naturel et mécanique, DENFC, volets coupe-feu — dimensionnement et réception.",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Détection incendie",
+                subtitle: "Détecteurs & alarmes",
+                desc: "Détecteurs optiques, thermiques, à ionisation — implantation réglementaire et vérification des systèmes.",
+                image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Extincteurs & RIA",
+                subtitle: "Moyens de première intervention",
+                desc: "Implantation des extincteurs, robinets d'incendie armés — plans d'équipement et conformité réglementaire.",
+                image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Évacuation & Compartimentage",
+                subtitle: "Cloisonnement & issues de secours",
+                desc: "Portes coupe-feu, recoupements, dégagements réglementaires — étude des flux et vérification normative.",
+                image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                ),
+              },
+            ].map(({ title, subtitle, icon, desc, image }) => (
+              <div
+                key={title}
+                className="group relative rounded-2xl overflow-hidden border border-white/8 hover:border-orange-500/40 transition-all duration-300"
+                style={{ minHeight: "280px" }}
+              >
+                {/* Background image */}
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060c18] via-[#060c18]/80 to-[#060c18]/40" />
+                {/* Orange top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Content */}
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="w-11 h-11 rounded-xl bg-orange-500/20 border border-orange-500/30 text-orange-400 flex items-center justify-center mb-4 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300">
+                    {icon}
+                  </div>
+                  <div className="text-orange-400 text-xs font-semibold uppercase tracking-widest mb-1">{subtitle}</div>
+                  <h3 className="text-white font-black text-xl mb-2">{title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── SECTEURS ── */}
       <section id="secteurs" className="py-24 bg-[#0a0f1e]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
