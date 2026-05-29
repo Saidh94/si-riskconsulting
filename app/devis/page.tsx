@@ -164,12 +164,8 @@ export default function DevisPage() {
                           <option>IGH – Résidentiel</option>
                           <option>IGH – Usage mixte</option>
                         </optgroup>
-                        <optgroup label="BUP / Code du Travail">
-                          <option>BUP – Bureaux</option>
-                          <option>BUP – Commerce</option>
-                          <option>BUP – Entrepôt</option>
-                          <option>CDT – Établissement industriel</option>
-                          <option>CDT – Autre usage professionnel</option>
+                        <optgroup label="Bâtiment à Usage Professionnel (BUP)">
+                          <option>BUP – Bâtiment à usage professionnel</option>
                         </optgroup>
                         <optgroup label="Industrie / Logistique">
                           <option>Entrepôt logistique</option>
