@@ -23,12 +23,23 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: "d5e1f1de-f384-4961-b4da-2305abdd73fc",
+          subject: `[Contact] ${form.sujet || "Nouveau message"} – ${form.nom}`,
+          from_name: "SI RISKCONSULTING Site",
+          name: form.nom,
+          email: form.email,
+          replyto: form.email,
+          telephone: form.telephone || "Non renseigné",
+          sujet: form.sujet || "Non renseigné",
+          message: form.message,
+        }),
       });
-      setStatus(res.ok ? "success" : "error");
+      const data = await res.json();
+      setStatus(data.success ? "success" : "error");
     } catch {
       setStatus("error");
     }

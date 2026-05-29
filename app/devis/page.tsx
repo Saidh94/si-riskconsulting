@@ -20,12 +20,27 @@ export default function DevisPage() {
     e.preventDefault();
     setStatus("loading");
     try {
-      const res = await fetch("/api/devis", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: "d5e1f1de-f384-4961-b4da-2305abdd73fc",
+          subject: `[Devis] ${form.typePrestation} – ${form.nom}${form.societe ? ` (${form.societe})` : ""}`,
+          from_name: "SI RISKCONSULTING Site",
+          name: form.nom,
+          email: form.email,
+          replyto: form.email,
+          societe: form.societe || "Non renseigné",
+          telephone: form.telephone || "Non renseigné",
+          type_etablissement: form.typeEtablissement || "Non renseigné",
+          surface: form.surface ? `${form.surface} m²` : "Non renseigné",
+          type_prestation: form.typePrestation,
+          delai: form.delai || "Non renseigné",
+          message: form.description || "Aucune description",
+        }),
       });
-      setStatus(res.ok ? "success" : "error");
+      const data = await res.json();
+      setStatus(data.success ? "success" : "error");
     } catch {
       setStatus("error");
     }
@@ -148,6 +163,13 @@ export default function DevisPage() {
                           <option>IGH – Bureaux</option>
                           <option>IGH – Résidentiel</option>
                           <option>IGH – Usage mixte</option>
+                        </optgroup>
+                        <optgroup label="BUP / Code du Travail">
+                          <option>BUP – Bureaux</option>
+                          <option>BUP – Commerce</option>
+                          <option>BUP – Entrepôt</option>
+                          <option>CDT – Établissement industriel</option>
+                          <option>CDT – Autre usage professionnel</option>
                         </optgroup>
                         <optgroup label="Industrie / Logistique">
                           <option>Entrepôt logistique</option>
