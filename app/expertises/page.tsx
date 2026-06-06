@@ -20,7 +20,7 @@ const expertises = [
       "Rédaction du cahier des charges SSI",
       "Contrôle de la conformité des installations SSI",
       "Assistance lors des essais et réception du SSI",
-      "Élaboration du dossier d'identité du SSI (DISS)",
+      "Élaboration du dossier d'identité du SSI (DI-SSI)",
     ],
   },
   {
