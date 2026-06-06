@@ -94,7 +94,7 @@ const jsonLd = {
     "Conformité IGH",
     "Conformité ICPE",
   ],
-  sameAs: [],
+  sameAs: ["https://www.linkedin.com/in/si-risk-consulting-42a08a35a/"],
 };
 
 export default function RootLayout({
