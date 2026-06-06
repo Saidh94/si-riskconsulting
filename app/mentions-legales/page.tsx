@@ -36,9 +36,9 @@ export default function MentionsLegalesPage() {
               </p>
               <div className="rounded-lg bg-white/4 border border-white/8 p-4 text-sm text-slate-400 space-y-1.5">
                 <p><span className="text-white font-semibold">SI RISKCONSULTING</span></p>
-                <p>Dirigeant : [À compléter]</p>
-                <p>Forme juridique : [À compléter – EI / SASU / SARL…]</p>
-                <p>SIRET : [À compléter]</p>
+                <p>Dirigeant : Said.H</p>
+                <p>Forme juridique : Entreprise Individuelle (EI)</p>
+                <p>SIRET : 939 435 905 00012</p>
                 <p>Adresse : Noisy-le-Grand (93), Île-de-France</p>
                 <p>Tél. fixe : <a href="tel:+33189629492" className="text-orange-400 hover:underline">01 89 62 94 92</a></p>
                 <p>Portable : <a href="tel:+33780992417" className="text-orange-400 hover:underline">07 80 99 24 17</a></p>
@@ -119,7 +119,7 @@ export default function MentionsLegalesPage() {
                 <div>
                   <h3 className="text-white font-semibold mb-2">Transfert de données</h3>
                   <p className="text-slate-400 leading-relaxed">
-                    Aucune donnée personnelle n&apos;est transmise à des tiers à des fins commerciales. Aucun transfert de données hors de l&apos;Union Européenne n&apos;est effectué.
+                    Les formulaires de contact et de devis utilisent le service <strong className="text-white">Web3Forms</strong> (opérateur américain) pour l&apos;acheminement des messages. Ce service agit en qualité de sous-traitant et ne conserve pas vos données à des fins propres. Aucune donnée n&apos;est transmise à des tiers à des fins commerciales.
                   </p>
                 </div>
 

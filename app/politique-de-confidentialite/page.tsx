@@ -84,7 +84,7 @@ export default function PolitiqueConfidentialitePage() {
                   <strong className="text-white">Durée de conservation :</strong> Les données sont conservées pendant <strong className="text-white">3 ans</strong> à compter de la dernière interaction, puis supprimées définitivement.
                 </p>
                 <p className="leading-relaxed">
-                  <strong className="text-white">Transfert de données :</strong> Aucune donnée personnelle n&apos;est vendue, louée ou transmise à des tiers. Aucun transfert hors Union Européenne n&apos;est effectué.
+                  <strong className="text-white">Transfert de données :</strong> Aucune donnée personnelle n&apos;est vendue, louée ou transmise à des tiers à des fins commerciales. Les formulaires utilisent le service <strong className="text-white">Web3Forms</strong> (sous-traitant américain) pour l&apos;acheminement des messages vers notre boîte email. Ce transfert est encadré par les conditions générales de Web3Forms et limité à la stricte transmission du message.
                 </p>
               </div>
             </div>
