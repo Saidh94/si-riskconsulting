@@ -55,7 +55,7 @@ async function sendConfirmationEmail(postText: string, postId: string) {
       subject: "✅ Post LinkedIn publié avec succès",
       from_name: "Agent LinkedIn SI RISKCONSULTING",
       name: "Agent LinkedIn",
-      email: "hachiba94@gmail.com",
+      email: "si-riskconsulting@outlook.com",
       message: `Ton post LinkedIn a été publié avec succès.\n\nID du post : ${postId}\n\n---\n\nTexte publié :\n\n${postText}`,
     }),
   });

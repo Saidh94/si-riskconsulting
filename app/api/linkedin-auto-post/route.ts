@@ -110,7 +110,7 @@ async function sendValidationEmail(postText: string, approvalUrl: string, topic:
       subject: `📝 Post LinkedIn à valider — ${topic}`,
       from_name: "Agent LinkedIn SI RISKCONSULTING",
       name: "Agent LinkedIn",
-      email: "hachiba94@gmail.com",
+      email: "si-riskconsulting@outlook.com",
       message: `Un nouveau post LinkedIn a été généré. Lis-le, corrige-le si besoin, puis clique sur le lien pour publier.\n\n${"=".repeat(50)}\n\nSUJET : ${topic}\n\n${postText}\n\n${"=".repeat(50)}\n\n✅ PUBLIER CE POST :\n${approvalUrl}\n\n⚠️ Ce lien est valable 7 jours. Si tu ne publies pas, le post sera ignoré.\n\nBonne lecture !`,
     }),
   });
@@ -161,7 +161,7 @@ export async function GET(request: Request) {
           subject: "❌ LinkedIn Agent — Erreur",
           from_name: "Agent LinkedIn SI RISKCONSULTING",
           name: "Agent LinkedIn",
-          email: "hachiba94@gmail.com",
+          email: "si-riskconsulting@outlook.com",
           message: `Erreur lors de la génération du post :\n\n${message}`,
         }),
       });
