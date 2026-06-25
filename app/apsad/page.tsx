@@ -24,7 +24,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la différence entre APSAD et NF ?",
-    answer: "Les règles APSAD sont émises par les assureurs via le CNPP, tandis que les normes NF sont publiées par l'AFNOR. Dans certains cas, une règle APSAD et une norme NF couvrent le même système (ex. APSAD R7 et NF S61-930 pour la détection incendie). Les règles APSAD sont souvent plus exigeantes que la réglementation minimale.",
+    answer: "Les règles APSAD sont émises par les assureurs via le CNPP, tandis que les normes NF sont publiées par l'AFNOR. Dans certains cas, une règle APSAD et une norme NF couvrent le même système (ex. APSAD R7 et NF S 61-970 pour la détection incendie, NF S 61-931 pour les généralités SSI). Les règles APSAD sont souvent plus exigeantes que la réglementation minimale.",
   },
   {
     question: "Qu'est-ce que la règle APSAD R1 ?",
