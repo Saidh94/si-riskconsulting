@@ -1,16 +1,12 @@
 import { NextResponse } from "next/server";
 
 // ─────────────────────────────────────────────────────────────
-// Vercel Cron Job — LinkedIn Auto-Post
+// Vercel Cron Job — LinkedIn Auto-Post (mode validation)
 // Déclenché chaque lundi et jeudi à 8h00 UTC
-// Variables d'environnement requises (Vercel Dashboard) :
-//   ANTHROPIC_API_KEY      — clé Claude API
-//   LINKEDIN_ACCESS_TOKEN  — token OAuth LinkedIn (60 jours)
-//   LINKEDIN_AUTHOR_URN    — urn:li:person:XXXX ou urn:li:organization:XXXX
-//   CRON_SECRET            — secret pour sécuriser l'endpoint
+// Le post est généré et envoyé par email pour validation.
+// Un clic sur le lien "Publier" dans l'email déclenche la publication.
 // ─────────────────────────────────────────────────────────────
 
-// Sujets rotatifs — 1 par appel, en boucle sur la semaine
 const TOPICS = [
   {
     theme: "Coordination SSI",
@@ -20,7 +16,7 @@ const TOPICS = [
   {
     theme: "APSAD R1 Sprinkler",
     brief: "Explique un point technique sur les sprinklers ou la règle APSAD R1 que les maîtres d'ouvrage méconnaissent. Donne un exemple concret d'entrepôt logistique ou d'industrie.",
-    hashtags: "#APSAD #Sprinkler #ExtinictionAutomatique #IncendieIndustriel #SécuritéIncendie",
+    hashtags: "#APSAD #Sprinkler #ExtinctionAutomatique #IncendieIndustriel #SécuritéIncendie",
   },
   {
     theme: "Lithium-ion et incendie",
@@ -82,7 +78,8 @@ Règles absolues :
 - Jamais de formules pompeuses ("En conclusion", "Il est important de noter")
 - Jamais de majuscules excessives
 - Terminer par une question courte pour susciter l'engagement
-- Ne PAS inclure les hashtags dans le texte, ils seront ajoutés séparément`,
+- Ne PAS inclure les hashtags dans le texte, ils seront ajoutés séparément
+- IMPORTANT : Ne jamais inventer de références réglementaires, de normes ou de chiffres non vérifiés. Si tu cites une norme, cite-la correctement (ex: NF S 61-932, arrêté du 25/06/1980, etc.)`,
       messages: [
         {
           role: "user",
@@ -99,52 +96,10 @@ Règles absolues :
 
   const data = await response.json();
   const postText = data.content[0].text.trim();
-
-  // Ajouter les hashtags en fin de post
   return `${postText}\n\n${topic.hashtags}`;
 }
 
-async function publishToLinkedIn(text: string): Promise<string> {
-  const accessToken = process.env.LINKEDIN_ACCESS_TOKEN;
-  const authorUrn = process.env.LINKEDIN_AUTHOR_URN;
-
-  if (!accessToken) throw new Error("LINKEDIN_ACCESS_TOKEN manquant");
-  if (!authorUrn) throw new Error("LINKEDIN_AUTHOR_URN manquant");
-
-  // Utilise la nouvelle API LinkedIn Posts (v2024)
-  const response = await fetch("https://api.linkedin.com/rest/posts", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-      "X-Restli-Protocol-Version": "2.0.0",
-      "LinkedIn-Version": "202601",
-    },
-    body: JSON.stringify({
-      author: authorUrn,
-      commentary: text,
-      visibility: "PUBLIC",
-      distribution: {
-        feedDistribution: "MAIN_FEED",
-        targetEntities: [],
-        thirdPartyDistributionChannels: [],
-      },
-      lifecycleState: "PUBLISHED",
-      isReshareDisabledByAuthor: false,
-    }),
-  });
-
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`LinkedIn API error ${response.status}: ${err}`);
-  }
-
-  // LinkedIn retourne l'ID du post dans le header x-restli-id
-  const postId = response.headers.get("x-restli-id") || "unknown";
-  return postId;
-}
-
-async function sendEmailNotification(postText: string, postId: string, topic: string) {
+async function sendValidationEmail(postText: string, approvalUrl: string, topic: string) {
   const web3FormsKey = process.env.WEB3FORMS_KEY || "d5e1f1de-f384-4961-b4da-2305abdd73fc";
 
   await fetch("https://api.web3forms.com/submit", {
@@ -152,17 +107,16 @@ async function sendEmailNotification(postText: string, postId: string, topic: st
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       access_key: web3FormsKey,
-      subject: `✅ LinkedIn publié — ${topic}`,
+      subject: `📝 Post LinkedIn à valider — ${topic}`,
       from_name: "Agent LinkedIn SI RISKCONSULTING",
       name: "Agent LinkedIn",
-      email: "si-riskconsulting@outlook.com",
-      message: `Post publié avec succès sur LinkedIn.\n\nSujet : ${topic}\nID du post : ${postId}\n\n---\n\nTexte publié :\n\n${postText}`,
+      email: "hachiba94@gmail.com",
+      message: `Un nouveau post LinkedIn a été généré. Lis-le, corrige-le si besoin, puis clique sur le lien pour publier.\n\n${"=".repeat(50)}\n\nSUJET : ${topic}\n\n${postText}\n\n${"=".repeat(50)}\n\n✅ PUBLIER CE POST :\n${approvalUrl}\n\n⚠️ Ce lien est valable 7 jours. Si tu ne publies pas, le post sera ignoré.\n\nBonne lecture !`,
     }),
   });
 }
 
 export async function GET(request: Request) {
-  // Vérification du secret cron (sécurité)
   const cronSecret = process.env.CRON_SECRET;
   if (cronSecret) {
     const authHeader = request.headers.get("authorization");
@@ -179,18 +133,18 @@ export async function GET(request: Request) {
     const postText = await generatePost(topic);
     console.log(`[LinkedIn Agent] Post généré (${postText.length} caractères)`);
 
-    // 2. Publier sur LinkedIn
-    const postId = await publishToLinkedIn(postText);
-    console.log(`[LinkedIn Agent] Publié — ID : ${postId}`);
+    // 2. Encoder le post pour l'URL d'approbation
+    const encodedPost = Buffer.from(postText).toString("base64");
+    const approvalUrl = `https://www.si-riskconsulting.fr/api/linkedin-publish?token=${cronSecret}&text=${encodeURIComponent(encodedPost)}`;
 
-    // 3. Notification email
-    await sendEmailNotification(postText, postId, topic.theme);
-    console.log(`[LinkedIn Agent] Notification email envoyée`);
+    // 3. Envoyer l'email de validation
+    await sendValidationEmail(postText, approvalUrl, topic.theme);
+    console.log(`[LinkedIn Agent] Email de validation envoyé`);
 
     return NextResponse.json({
       success: true,
+      status: "En attente de validation",
       topic: topic.theme,
-      postId,
       length: postText.length,
       preview: postText.slice(0, 100) + "...",
     });
@@ -198,7 +152,6 @@ export async function GET(request: Request) {
     const message = error instanceof Error ? error.message : String(error);
     console.error(`[LinkedIn Agent] Erreur : ${message}`);
 
-    // Notification email d'erreur
     try {
       await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -208,8 +161,8 @@ export async function GET(request: Request) {
           subject: "❌ LinkedIn Agent — Erreur",
           from_name: "Agent LinkedIn SI RISKCONSULTING",
           name: "Agent LinkedIn",
-          email: "si-riskconsulting@outlook.com",
-          message: `Erreur lors de la publication automatique :\n\n${message}`,
+          email: "hachiba94@gmail.com",
+          message: `Erreur lors de la génération du post :\n\n${message}`,
         }),
       });
     } catch {}
