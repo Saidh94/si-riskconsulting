@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function DevisPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     nom: "", societe: "", email: "", telephone: "",
     typeEtablissement: "", surface: "", typePrestation: "", delai: "", description: "",
@@ -40,7 +42,11 @@ export default function DevisPage() {
         }),
       });
       const data = await res.json();
-      setStatus(data.success ? "success" : "error");
+      if (data.success) {
+        router.push("/merci");
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }

@@ -93,7 +93,19 @@ const jsonLd = {
     "Conformité réglementaire ERP",
     "Conformité IGH",
     "Conformité ICPE",
+    "APSAD",
+    "Sprinkler",
+    "Désenfumage",
   ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "19:00",
+    },
+  ],
+  priceRange: "Sur devis",
   sameAs: ["https://www.linkedin.com/in/si-risk-consulting-42a08a35a/"],
 };
 

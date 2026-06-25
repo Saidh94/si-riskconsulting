@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -10,6 +11,7 @@ const inputCls =
 const labelCls = "block text-sm font-medium text-slate-300 mb-1.5";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     nom: "", email: "", telephone: "", sujet: "", message: "",
   });
@@ -39,7 +41,11 @@ export default function ContactPage() {
         }),
       });
       const data = await res.json();
-      setStatus(data.success ? "success" : "error");
+      if (data.success) {
+        router.push("/merci");
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
