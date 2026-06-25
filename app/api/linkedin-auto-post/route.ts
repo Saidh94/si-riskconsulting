@@ -118,7 +118,7 @@ async function publishToLinkedIn(text: string): Promise<string> {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
       "X-Restli-Protocol-Version": "2.0.0",
-      "LinkedIn-Version": "202504",
+      "LinkedIn-Version": "202601",
     },
     body: JSON.stringify({
       author: authorUrn,
