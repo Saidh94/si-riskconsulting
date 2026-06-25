@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "APSAD sécurité incendie : guide complet des règles et certifications",
   description:
-    "Guide complet des règles APSAD en sécurité incendie : APSAD R1 (sprinkler), R7 (détection), R13 (gaz), D9 (vérification). Bureau d'études APSAD indépendant.",
+    "Guide complet des référentiels en sécurité incendie : APSAD R1 (sprinkler), R7 (détection), R13 (gaz), D9 (besoins en eau), NF S 61-933 (maintenance SSI), certifications I7/F7. Bureau d'études indépendant.",
   alternates: { canonical: "https://www.si-riskconsulting.fr/apsad" },
   openGraph: {
     title: "APSAD sécurité incendie : guide complet | SI RISKCONSULTING",
@@ -40,9 +40,9 @@ const rules = [
   { ref: "R1", title: "Sprinkler", desc: "Conditions d'installation des systèmes d'extinction automatique à eau (sprinkler). Classement des risques, densités d'arrosage, surfaces protégées.", color: "from-orange-600 to-red-600" },
   { ref: "R7", title: "Détection incendie", desc: "Systèmes de détection incendie (SDI). Implantation des détecteurs, câblage, tableaux de signalisation, interactions avec le SSI.", color: "from-orange-600 to-red-600" },
   { ref: "R13", title: "Extinction gaz", desc: "Systèmes d'extinction automatique à gaz. Conditions d'emploi, dimensionnement, confinement des locaux protégés.", color: "from-orange-600 to-red-600" },
-  { ref: "D9", title: "Vérification SSI", desc: "Guide de vérification périodique des SSI. Fréquences, protocoles, niveaux de compétence requis.", color: "from-orange-600 to-red-600" },
-  { ref: "FM Global", title: "Assureur industriel", desc: "Factory Mutual Global : référentiel de protection incendie des grands sites industriels et logistiques, souvent plus exigeant que l'APSAD.", color: "from-orange-600 to-red-600" },
-  { ref: "NFPA 13", title: "Sprinkler US", desc: "Norme américaine de référence pour les sprinklers. Utilisée sur certains projets internationaux ou imposée par des assureurs étrangers.", color: "from-orange-600 to-red-600" },
+  { ref: "D9", title: "Besoins en eau", desc: "Guide de calcul des besoins en eau pour les installations sprinkler : débits, réserves, pressions. Document de référence pour le dimensionnement hydraulique.", color: "from-orange-600 to-red-600" },
+  { ref: "NF S 61-933", title: "Maintenance SSI", desc: "Norme AFNOR définissant les règles de maintenance et d'exploitation des Systèmes de Sécurité Incendie (SSI). Fréquences, opérations requises, niveaux d'intervention.", color: "from-orange-600 to-red-600" },
+  { ref: "I7 / F7", title: "Certifications APSAD", desc: "Certifications APSAD des entreprises de maintenance : I7 pour les installateurs et mainteneurs sprinkler, F7 pour la détection incendie (SDI). Exigées par les assureurs.", color: "from-orange-600 to-red-600" },
 ];
 
 const jsonLd = {
@@ -87,8 +87,9 @@ export default function APSADPage() {
             </span>
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl mb-8">
-            Les règles APSAD (R1, R7, R13, D9, FM Global, NFPA) sont les référentiels de protection incendie
-            exigés par les assureurs pour les sites industriels, entrepôts logistiques et bâtiments à risque.
+            Les règles APSAD (R1, R7, R13, D9), les normes AFNOR (NF S 61-933) et les certifications (I7, F7)
+            constituent les référentiels de protection incendie exigés par les assureurs pour les sites industriels,
+            entrepôts logistiques et bâtiments à risque.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/devis" className="px-6 py-3 rounded-lg font-bold text-white text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(135deg, #f97316, #dc2626)" }}>
@@ -153,7 +154,7 @@ export default function APSADPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-orange-400 font-semibold text-xs uppercase tracking-widest">Référentiels</span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-black text-white">Les principales règles APSAD</h2>
+            <h2 className="mt-3 text-2xl sm:text-3xl font-black text-white">Référentiels et normes</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rules.map(({ ref, title, desc }) => (
