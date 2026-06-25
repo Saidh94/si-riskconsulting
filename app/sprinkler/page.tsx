@@ -24,7 +24,7 @@ const faqItems = [
   },
   {
     question: "Quelle est la durée de vie d'un système sprinkler ?",
-    answer: "Un système sprinkler correctement entretenu peut fonctionner pendant 25 à 50 ans. Les têtes sprinkler elles-mêmes ont une durée de vie garantie par le fabricant (généralement 20 ans pour les têtes à bulbe rapide). Des vérifications périodiques annuelles (règle APSAD D9) sont obligatoires.",
+    answer: "Un système sprinkler correctement entretenu peut fonctionner pendant 25 à 50 ans. Les têtes sprinkler elles-mêmes ont une durée de vie garantie par le fabricant (généralement 20 ans pour les têtes à bulbe rapide). La maintenance doit être assurée par une entreprise certifiée APSAD I7, avec des vérifications périodiques annuelles.",
   },
   {
     question: "Peut-on installer des rayonnages hauts dans un entrepôt sprinklerisé ?",
