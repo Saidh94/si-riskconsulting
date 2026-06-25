@@ -71,15 +71,18 @@ export default async function Image() {
         {/* Main title */}
         <div
           style={{
+            display: "flex",
+            flexWrap: "wrap",
             fontSize: "62px",
             fontWeight: "900",
             color: "white",
             lineHeight: 1.1,
             marginBottom: "24px",
             maxWidth: "800px",
+            gap: "16px",
           }}
         >
-          Maîtriser le risque{" "}
+          <span style={{ color: "white" }}>Maîtriser le risque</span>
           <span
             style={{
               background: "linear-gradient(135deg, #f97316, #dc2626)",
