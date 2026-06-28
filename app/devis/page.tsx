@@ -254,13 +254,4 @@ export default function DevisPage() {
                   {status === "loading" ? "Envoi en cours..." : "Envoyer ma demande de devis"}
                 </button>
                 <p className="text-xs text-slate-600 text-center">
-                  Devis gratuit, sans engagement. Réponse sous 24h ouvrées.
-                </p>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+                  Devis gratuit, sans engagement. Réponse sous 24h ou

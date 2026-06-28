@@ -132,13 +132,4 @@ export default async function Image() {
             bottom: "40px",
             right: "80px",
             fontSize: "16px",
-            color: "#475569",
-          }}
-        >
-          www.si-riskconsulting.fr
-        </div>
-      </div>
-    ),
-    { ...size }
-  );
-}
+            color: "#475569

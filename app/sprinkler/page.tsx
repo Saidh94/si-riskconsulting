@@ -20,7 +20,7 @@ const faqItems = [
   },
   {
     question: "Qu'est-ce que la règle APSAD R1 ?",
-    answer: "La règle APSAD R1 définit les conditions d'installation des systèmes sprinkler à eau. Elle classe les risques (ordinaires GO1 à GO4, industriels spéciaux) et fixe pour chacun les densités d'arrosage, les surfaces maximales couvertes par poste, les conditions de stockage. Elle est le référentiel principal des assureurs.",
+    answer: "La règle APSAD R1, basée sur la norme NF EN 12845, définit les conditions d'installation des systèmes sprinkler à eau. Elle classe les risques en LH (risque faible), OH1 à OH4 (risques moyens), HHP1 à HHP4 (activités à risque élevé) et HHS1 à HHS4 (stockages à risque élevé). Elle fixe pour chaque classe les densités d'arrosage, les surfaces impliquées et les conditions de stockage. Elle est le référentiel principal des assureurs.",
   },
   {
     question: "Quelle est la durée de vie d'un système sprinkler ?",
@@ -98,20 +98,23 @@ export default function SprinklerPage() {
                 seules celles directement exposées à la chaleur s&apos;activent, limitant ainsi les dommages causés par l&apos;eau.
               </p>
               <p className="text-slate-400 leading-relaxed">
-                Le système est relié à une centrale SDI et déclenche une alarme sonore et lumineuse. Il est
+                Le système est équipé d&apos;un <strong className="text-white">Équipement de Contrôle et de Signalisation (ECS)</strong> qui
+                reçoit les alarmes des postes de contrôle sprinkler et déclenche les reports d&apos;alarme. Il est
                 dimensionné selon la <strong className="text-white">règle APSAD R1</strong> en fonction de la classe de risque
                 du bâtiment.
               </p>
             </div>
             <div className="rounded-2xl bg-[#0a0f1e] border border-white/8 p-8">
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6">Classes de risques APSAD R1</h3>
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6">Classes de risques APSAD R1 / EN 12845</h3>
               <ul className="space-y-4">
                 {[
-                  { classe: "GO1", desc: "Risque ordinaire faible : bureaux, hôtels, logements collectifs" },
-                  { classe: "GO2", desc: "Risque ordinaire moyen : grandes surfaces, entrepôts de petite hauteur" },
-                  { classe: "GO3", desc: "Risque ordinaire élevé : stockage de matières combustibles en quantité" },
-                  { classe: "GO4", desc: "Risque ordinaire très élevé : stockage de produits inflammables" },
-                  { classe: "IS", desc: "Risque industriel spécial : peintures, aérosols, caoutchouc, pneus" },
+                  { classe: "LH", desc: "Light Hazard — Risque faible : locaux à faible charge calorifique (bureaux, écoles, prisons). Aucun local unique > 126 m² avec tenue au feu < 30 min." },
+                  { classe: "OH1", desc: "Ordinary Hazard Gr. 1 — Risque moyen faible : hôpitaux, hôtels, verreries, abattoirs, parkings, laboratoires." },
+                  { classe: "OH2", desc: "Ordinary Hazard Gr. 2 — Risque moyen : boulangeries, cinémas, bibliothèques, restaurants, musées, blanchisseries." },
+                  { classe: "OH3", desc: "Ordinary Hazard Gr. 3 — Risque moyen élevé : grands magasins, centres commerciaux, ateliers de bois, fabriques de meubles (sans plastiques expansés)." },
+                  { classe: "OH4", desc: "Ordinary Hazard Gr. 4 — Risque moyen très élevé : cotonneries, filatures, fabriques de tissus et confection, sucreries, distilleries." },
+                  { classe: "HHP 1-4", desc: "High Hazard Process — Activité à risque élevé : ateliers de peinture avec solvants, imprimeries, fabriques de plastiques, câbleries, pneus. HHP4 = risque spécial (déluge hors sprinkler classique)." },
+                  { classe: "HHS 1-4", desc: "High Hazard Storage — Stockage à risque élevé en racks dépassant les hauteurs limites OH. Classé par catégorie de marchandise (I à IV) selon la combustibilité et le mode de stockage." },
                 ].map(({ classe, desc }) => (
                   <li key={classe} className="flex items-start gap-3 pb-4 border-b border-white/5 last:border-0 last:pb-0">
                     <span className="px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 text-xs font-bold shrink-0">{classe}</span>
