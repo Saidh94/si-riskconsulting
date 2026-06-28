@@ -103,23 +103,22 @@ export default function BlogPage() {
             {/* Articles */}
             <div className="lg:col-span-2 space-y-8">
               {articles.map(({ slug, tag, title, excerpt, date, readTime }) => (
-                <article key={slug} className="rounded-2xl bg-[#0a0f1e] border border-white/8 p-6 hover:border-orange-400/30 transition-colors group">
-                  <div className="flex items-center gap-3 mb-3">
+                <article key={slug} className="relative rounded-2xl bg-[#0a0f1e] border border-white/8 p-6 hover:border-orange-400/30 transition-colors group">
+                  <Link href={slug} className="absolute inset-0 z-0 rounded-2xl" aria-label={title} />
+                  <div className="relative z-10 flex items-center gap-3 mb-3">
                     <span className="px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/25 text-orange-400 text-xs font-semibold">
                       {tag}
                     </span>
                     <span className="text-slate-600 text-xs">{date} · {readTime} de lecture</span>
                   </div>
-                  <Link href={slug}>
-                    <h2 className="text-white font-bold text-xl mb-3 group-hover:text-orange-400 transition-colors leading-snug">
-                      {title}
-                    </h2>
-                  </Link>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">{excerpt}</p>
-                  <Link href={slug} className="inline-flex items-center gap-1.5 text-orange-400 text-sm font-semibold hover:gap-2.5 transition-all">
+                  <h2 className="relative z-10 text-white font-bold text-xl mb-3 group-hover:text-orange-400 transition-colors leading-snug">
+                    {title}
+                  </h2>
+                  <p className="relative z-10 text-slate-400 text-sm leading-relaxed mb-4">{excerpt}</p>
+                  <span className="relative z-10 inline-flex items-center gap-1.5 text-orange-400 text-sm font-semibold pointer-events-none">
                     Lire l&apos;article
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                  </Link>
+                  </span>
                 </article>
               ))}
             </div>
@@ -171,10 +170,4 @@ export default function BlogPage() {
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+     
