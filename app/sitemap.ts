@@ -15,4 +15,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/coordination-ssi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/moe-ssi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
 
-    // Pages piliers SEO — A
+    // Pages piliers SEO — Audits
+    { url: `${base}/audit-incendie`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+
+    // Pages piliers SEO — APSAD
+    { url: `${base}/apsad`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+
+    // Pages piliers SEO — Systèmes
+    { url: `${base}/sprinkler`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+    { url: `${base}/desenfumage`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
+
+    // Pages légales
+    { url: `${base}/mentions-legales`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/politique-de-confidentialite`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+  ];
+}
