@@ -170,4 +170,10 @@ export default function BlogPage() {
                   ))}
                 </ul>
               </div>
-     
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
