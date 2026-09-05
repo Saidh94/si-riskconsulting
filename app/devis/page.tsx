@@ -141,7 +141,7 @@ export default function DevisPage() {
                     </div>
                     <div>
                       <label className={labelCls}>Téléphone</label>
-                      <input type="tel" value={form.telephone} onChange={set("telephone")} placeholder="01 89 62 94 92" className={inputCls} />
+                      <input type="tel" value={form.telephone} onChange={set("telephone")} placeholder="07 80 62 94 92" className={inputCls} />
                     </div>
                   </div>
                 </div>

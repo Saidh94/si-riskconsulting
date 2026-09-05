@@ -2,31 +2,34 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.si-riskconsulting.fr";
+  const now = new Date();
 
-  return [
-    // Pages principales
-    { url: base, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
-    { url: `${base}/expertises`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
-    { url: `${base}/devis`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-
-    // Pages piliers SEO — Coordination SSI
-    { url: `${base}/coordination-ssi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/moe-ssi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
-
-    // Pages piliers SEO — Audits
-    { url: `${base}/audit-incendie`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-
-    // Pages piliers SEO — APSAD
-    { url: `${base}/apsad`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
-
-    // Pages piliers SEO — Systèmes
-    { url: `${base}/sprinkler`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
-    { url: `${base}/desenfumage`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.85 },
-
-    // Pages légales
-    { url: `${base}/mentions-legales`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/politique-de-confidentialite`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+  const pages = [
+    { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
+    { url: "/expertises", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/contact", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/devis", priority: 0.9, changeFrequency: "monthly" as const },
+    // Pages piliers SEO
+    { url: "/coordination-ssi", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/moe-ssi", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/audit-incendie", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/apsad", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/sprinkler", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/desenfumage", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/commission-securite-erp", priority: 0.8, changeFrequency: "monthly" as const },
+    // Pages locales
+    { url: "/ile-de-france", priority: 0.8, changeFrequency: "monthly" as const },
+    // Blog
+    { url: "/blog", priority: 0.7, changeFrequency: "weekly" as const },
+    // Légal
+    { url: "/mentions-legales", priority: 0.3, changeFrequency: "yearly" as const },
+    { url: "/politique-de-confidentialite", priority: 0.3, changeFrequency: "yearly" as const },
   ];
+
+  return pages.map(({ url, priority, changeFrequency }) => ({
+    url: `${base}${url}`,
+    lastModified: now,
+    changeFrequency,
+    priority,
+  }));
 }

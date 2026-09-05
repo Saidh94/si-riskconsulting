@@ -97,8 +97,8 @@ export default function ContactPage() {
                         </svg>
                       ),
                       label: "Tél. fixe",
-                      value: "01 89 62 94 92",
-                      href: "tel:+33189629492",
+                      value: "07 80 62 94 92",
+                      href: "tel:+33780629492",
                     },
                     {
                       icon: (
@@ -107,8 +107,8 @@ export default function ContactPage() {
                         </svg>
                       ),
                       label: "Portable",
-                      value: "07 80 99 24 17",
-                      href: "tel:+33780992417",
+                      value: "07 80 62 94 92",
+                      href: "tel:+33780629492",
                     },
                   ].map(({ icon, label, value, href }) => (
                     <li key={label} className="flex items-start gap-3">
@@ -207,7 +207,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className={labelCls}>Téléphone</label>
-                        <input type="tel" value={form.telephone} onChange={set("telephone")} placeholder="01 89 62 94 92" className={inputCls} />
+                        <input type="tel" value={form.telephone} onChange={set("telephone")} placeholder="07 80 62 94 92" className={inputCls} />
                       </div>
                       <div>
                         <label className={labelCls}>Sujet</label>
